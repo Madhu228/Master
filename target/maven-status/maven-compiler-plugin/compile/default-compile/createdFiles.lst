@@ -1,0 +1,11 @@
+com\pages\HomePage.class
+com\qa\factory\DriverFactory.class
+com\qa\util\ConfigReader.class
+com\qa\util\JSONFileClass.class
+com\pages\AccountSettings.class
+com\pages\NewShopDeatilsPage.class
+com\pages\ShopDetailsPage.class
+com\pages\CompanyDetailsPage.class
+com\pages\NewCompanyDeatilsPage.class
+com\qa\factory\WebDriverUtil.class
+com\pages\LogInPage.class

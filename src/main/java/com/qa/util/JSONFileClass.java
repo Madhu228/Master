@@ -1,0 +1,22 @@
+package com.qa.util;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Serializable;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.openqa.selenium.WebDriverException;
+
+@SuppressWarnings("serial")
+public class JSONFileClass extends WebDriverException implements Serializable {
+	// public static void main(String[] arg) throws IOException, ParseException {
+	public JSONObject readJson() throws IOException, ParseException {
+		JSONParser jsonParser = new JSONParser();
+		FileReader reader = new FileReader("./src/test/resources/JsonFiles/Companydata.json");
+		Object obj = jsonParser.parse(reader);
+		JSONObject userLogIn = (JSONObject) obj;
+		return userLogIn;
+	}
+}
