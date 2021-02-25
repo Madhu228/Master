@@ -20,7 +20,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class CompanyTest{
+public class CompanyTest {
 	WebDriver driver;
 	LogInPage logIn;
 	JSONFileClass file;
@@ -31,10 +31,11 @@ public class CompanyTest{
 	String CompanyName;
 	AccountSettings account;
 	ApplicationHooks base;
+
 	@Given("user navigate to the company page")
 	public void user_navigate_to_the_company_page() throws InterruptedException {
-		
-		account=new AccountSettings(DriverFactory.getDriver());
+
+		account = new AccountSettings(DriverFactory.getDriver());
 		account.clickon_company();
 		companyAccount = new CompanyDetailsPage(DriverFactory.getDriver());
 		companyAccount.clickon_ToggleButton();

@@ -74,11 +74,12 @@ public class NewShopDeatilsPage {
 	WebElement message;
 
 	WebDriver driver;
+
 	public NewShopDeatilsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public void enterShop(String shop) {
 		shop_Text.sendKeys(shop);
 	}
@@ -87,9 +88,10 @@ public class NewShopDeatilsPage {
 		email_Text.sendKeys(email);
 	}
 
-public void select_Region(String region) throws InterruptedException {
-	WebDriverUtil.selectText(region_Drop_Down, region);
-}
+	public void select_Region(String region) throws InterruptedException {
+		WebDriverUtil.selectText(region_Drop_Down, region);
+	}
+
 	public void processHiring() {
 		process_Hiring_Slider.click();
 	}
@@ -105,53 +107,69 @@ public void select_Region(String region) throws InterruptedException {
 	public void store_24_Hours() {
 		store_24_Hours_Slider.click();
 	}
+
 	public void automate_Payroll_Hours() {
 		automate_Payroll_Hours_Slider.click();
 	}
+
 	public void enterAddress1(String address1) {
 		address_Text1.sendKeys(address1);
 	}
+
 	public void enterAddress2(String address2) {
 		address_Text2.sendKeys(address2);
 	}
+
 	public void enterCity(String city) {
 		city_Text.sendKeys(city);
 	}
+
 	public void stateDropDown(String state) {
 		WebDriverUtil.selectText(state_Drop_Down, state);
 	}
+
 	public void enterZipoCode(String zip) {
 		zip_Text.sendKeys(zip);
 	}
+
 	public void enterRent(String rent) {
 		rent_Text.clear();
 		rent_Text.sendKeys(rent);
 	}
+
 	public void enterCost(String cost) {
 		cost_Text.clear();
 		cost_Text.sendKeys(cost);
 	}
+
 	public void foodCostDistributorDropDown(String food) {
 		WebDriverUtil.selectText(food_Cost_Distributor_Drop_Down, food);
 	}
+
 	public void companyIDDropDown(String id) {
 		WebDriverUtil.selectText(company_ID_Drop_Down, id);
 	}
+
 	public void enterNewHire(String email) {
 		new_Hire_Email.sendKeys(email);
 	}
+
 	public void enterWeeklyScheduleEmail(String email) {
 		weekly_Schedule_Email.sendKeys(email);
 	}
+
 	public void enterEngagementEmail(String email) {
 		engagement_Email.sendKeys(email);
 	}
+
 	public void enterBGCEmail(String email) {
 		BGC_Email.sendKeys(email);
 	}
-	public void enterE_Verify(String email){
+
+	public void enterE_Verify(String email) {
 		E_Verify_Email.sendKeys(email);
 	}
+
 	public void click_Save_Button() {
 		save_Button.click();
 	}

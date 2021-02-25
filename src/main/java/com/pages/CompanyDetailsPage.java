@@ -20,10 +20,12 @@ public class CompanyDetailsPage {
 	@FindBy(xpath = "//div[@class='ui-growl-icon-close pi pi-times']")
 	WebElement successfull_Delete_Message;
 	WebDriver driver;
+
 	public CompanyDetailsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+
 	public void clickon_ToggleButton() throws InterruptedException {
 		WebDriverUtil.waitForElementStatus(toggle_Button);
 		WebDriverUtil.waitForElementJavaScript(toggle_Button);

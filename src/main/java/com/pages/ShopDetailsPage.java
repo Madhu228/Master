@@ -17,6 +17,7 @@ public class ShopDetailsPage {
 	@FindBy(xpath = "//span[@class = 'ui-button-icon-left ui-clickable pi pi-check']")
 	WebElement delete_Button;
 	WebDriver driver;
+
 	public ShopDetailsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -33,7 +34,8 @@ public class ShopDetailsPage {
 	}
 
 	public void delete(String Shop) throws InterruptedException {
-		WebElement element = driver.findElement(By.xpath("//a[text() ='" + Shop + "']/parent::span/parent::div/following::td[9]"));
+		WebElement element = driver
+				.findElement(By.xpath("//a[text() ='" + Shop + "']/parent::span/parent::div/following::td[9]"));
 		WebDriverUtil.waitForElementVisiblity(element);
 		element.click();
 		delete_Button.click();

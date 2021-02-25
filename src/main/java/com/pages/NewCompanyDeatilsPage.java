@@ -18,7 +18,7 @@ public class NewCompanyDeatilsPage {
 	WebElement address2;
 	@FindBy(xpath = "//input[@formcontrolname='City']")
 	WebElement city;
-	@FindBy(css="select[formcontrolname='StateID']")
+	@FindBy(css = "select[formcontrolname='StateID']")
 	WebElement drop_Down;
 	@FindBy(xpath = "//input[@formcontrolname='ZipCode']")
 	WebElement zip_Code;
@@ -31,42 +31,57 @@ public class NewCompanyDeatilsPage {
 	@FindBy(xpath = "//button[contains(text(),'Save')]")
 	WebElement save_Button;
 	WebDriver driver;
+
 	public NewCompanyDeatilsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+
 	public void enter_Company_name(String companyName) {
 		company_Name.sendKeys(companyName);
 	}
+
 	public void enter_EIN(String number) {
-		eIN.sendKeys(String.valueOf(number));
+		WebDriverUtil.waitForElementVisiblity(eIN);
+		WebDriverUtil.passTheValueUsingJavaScript(number, eIN);
+		eIN.click();
+		//eIN.sendKeys(String.valueOf(number));
 	}
+
 	public void enter_Address(String address) {
 		address1.sendKeys(address);
 	}
+
 	public void enter_Address2(String address1) {
 		address2.sendKeys(address1);
 	}
+
 	public void enter_City(String City) {
 		city.sendKeys(City);
 	}
+
 	public void select_drop_Down(String text) throws InterruptedException {
 		WebDriverUtil.waitForElementVisiblity(drop_Down);
 		WebDriverUtil.selectText(drop_Down, text);
 	}
+
 	public void enter_Zip_Code(String code) {
 		zip_Code.sendKeys(code);
 	}
+
 	public void enter_Contact_Number(String number) {
 		WebDriverUtil.waitForElementVisiblity(contact_Number);
 		contact_Number.sendKeys(number);
 	}
+
 	public void enter_Email(String mail) {
 		e_mail.sendKeys(mail);
 	}
+
 	public void enter_Pay_Roll(String payRoll) {
 		pay_roll_Id.sendKeys(payRoll);
 	}
+
 	public void click_Save_Button() {
 		save_Button.click();
 	}

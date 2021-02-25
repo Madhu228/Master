@@ -13,6 +13,7 @@ public class AccountSettings {
 	@FindBy(xpath = "//h2[contains(text(),'Shops')]")
 	WebElement shop_Link;
 	WebDriver driver;
+
 	public AccountSettings(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

@@ -1,5 +1,6 @@
 package com.qa.factory;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -21,10 +22,38 @@ public class WebDriverUtil {
 	// WebDriverCommonLib wlib = new WebDriverCommonLib();
 
 	public static void waitForElementStatus(WebElement element) {
-		
+
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 60);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 
+	}
+
+	public static void closeTabs() {
+		String originalHandle = DriverFactory.getDriver().getWindowHandle();
+
+		// Do something to open new tabs
+
+		for (String handle : DriverFactory.getDriver().getWindowHandles()) {
+			if (!handle.equals(originalHandle)) {
+				DriverFactory.getDriver().switchTo().window(handle);
+				DriverFactory.getDriver().close();
+			}
+		}
+
+		DriverFactory.getDriver().switchTo().window(originalHandle);
+	}
+
+	public static String SwitchTab() {
+		ArrayList<String> tabs2 = new ArrayList<String>(DriverFactory.getDriver().getWindowHandles());
+		DriverFactory.getDriver().switchTo().window(tabs2.get(1));
+		String cp = DriverFactory.getDriver().getTitle();
+		DriverFactory.getDriver().switchTo().window(tabs2.get(0));
+		return cp;
+	}
+
+	public static void passTheValueUsingJavaScript(String value, WebElement element) {
+		JavascriptExecutor jse = (JavascriptExecutor) DriverFactory.getDriver();
+		jse.executeScript("arguments[0].value='" + value + "';", element);
 	}
 
 	public static void waitForElementVisiblity(WebElement element) {
@@ -104,7 +133,7 @@ public class WebDriverUtil {
 	 *
 	 *
 	 */
-	public static  void doubleClick(WebElement element) {
+	public static void doubleClick(WebElement element) {
 		Actions ac = new Actions(DriverFactory.getDriver());
 		ac.doubleClick(element).perform();
 
@@ -155,16 +184,15 @@ public class WebDriverUtil {
 	 *
 	 * 
 	 */
-	/*public static  void verify(String act, String exp, String msg) {
-		Assert.assertEquals(act, exp);
-		Reporter.log(msg + " test passed", true);
-	}
-*/
+	/*
+	 * public static void verify(String act, String exp, String msg) {
+	 * Assert.assertEquals(act, exp); Reporter.log(msg + " test passed", true); }
+	 */
 	/**
 	 * used to click on alert
 	 *
 	 */
-	public static  void acceptAlert() {
+	public static void acceptAlert() {
 		DriverFactory.getDriver().switchTo().alert().accept();
 	}
 
@@ -182,7 +210,7 @@ public class WebDriverUtil {
 	 * 
 	 *
 	 */
-	public static  String getTitlePage() {
+	public static String getTitlePage() {
 		String title = DriverFactory.getDriver().getTitle();
 		return title;
 	}

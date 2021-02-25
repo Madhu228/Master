@@ -14,7 +14,7 @@ public class JSONFileClass extends WebDriverException implements Serializable {
 	// public static void main(String[] arg) throws IOException, ParseException {
 	public JSONObject readJson() throws IOException, ParseException {
 		JSONParser jsonParser = new JSONParser();
-		FileReader reader = new FileReader("./src/test/resources/JsonFiles/Companydata.json");
+		FileReader reader = new FileReader(System.getProperty("user.dir")+"./src/test/resources/JsonFiles/Companydata.json");
 		Object obj = jsonParser.parse(reader);
 		JSONObject userLogIn = (JSONObject) obj;
 		return userLogIn;

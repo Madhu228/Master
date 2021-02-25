@@ -22,17 +22,20 @@ public class ApplicationHooks {
 	private WebDriver driver;
 	private ConfigReader configReader;
 	Properties prop;
+
 	@Before(order = 0)
 	public void getProperty() {
 		configReader = new ConfigReader();
 		prop = configReader.init_prop();
 	}
+
 	@Before(order = 1)
 	public void launchBrowser() {
 		String browserName = prop.getProperty("browser");
 		driverFactory = new DriverFactory();
-		driver = driverFactory.init_driver(browserName);	
+		driver = driverFactory.init_driver(browserName);
 	}
+
 	@Before(order = 2)
 	public void navigate_to_Subsource() throws InterruptedException {
 		DriverFactory.getDriver().get(prop.getProperty("url"));
@@ -45,10 +48,12 @@ public class ApplicationHooks {
 		home.clickon_Settings();
 		home.clickon_Account_Settings();
 	}
+
 	@After(order = 0)
 	public void quitBrowser() throws InterruptedException {
 		driver.quit();
 	}
+
 	@After(order = 1)
 	public void tearDown(Scenario scenario) {
 		if (scenario.isFailed()) {

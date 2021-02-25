@@ -18,7 +18,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ShopTest{
+public class ShopTest {
 	WebDriver driver;
 	ShopDetailsPage shop_Details;
 	JSONFileClass file;
@@ -27,9 +27,10 @@ public class ShopTest{
 	AccountSettings account;
 	ApplicationHooks base;
 	NewShopDeatilsPage new_Shop_Details;
+
 	@Given("user navigate to the Shop page")
 	public void user_navigate_to_the_shop_page() throws InterruptedException {
-		account=new AccountSettings(DriverFactory.getDriver());
+		account = new AccountSettings(DriverFactory.getDriver());
 		account.click_Shop();
 		shop_Details = new ShopDetailsPage(DriverFactory.getDriver());
 		shop_Details.click_Toggle_Button();
@@ -37,8 +38,9 @@ public class ShopTest{
 	}
 
 	@When("user enter the valid creadentails Of Shop page")
-	public void user_enter_the_valid_creadentails_of_shop_page() throws IOException, ParseException, InterruptedException {
-		new_Shop_Details=new NewShopDeatilsPage(DriverFactory.getDriver());
+	public void user_enter_the_valid_creadentails_of_shop_page()
+			throws IOException, ParseException, InterruptedException {
+		new_Shop_Details = new NewShopDeatilsPage(DriverFactory.getDriver());
 		file = new JSONFileClass();
 		user = file.readJson();
 		JSONArray userLogInArray = (JSONArray) user.get("shopDetails");
@@ -46,7 +48,7 @@ public class ShopTest{
 			JSONObject details = (JSONObject) userLogInArray.get(i);
 			company = (String) details.get("shop");
 			new_Shop_Details.enterShop((String) details.get("shop"));
-			new_Shop_Details.enterEmail((String)details.get("email"));
+			new_Shop_Details.enterEmail((String) details.get("email"));
 			new_Shop_Details.select_Region((String) details.get("region"));
 			new_Shop_Details.processHiring();
 			new_Shop_Details.automate_BGC();
@@ -54,7 +56,7 @@ public class ShopTest{
 			new_Shop_Details.store_24_Hours();
 			new_Shop_Details.automate_Payroll_Hours();
 			new_Shop_Details.enterAddress1((String) details.get("address1"));
-			//new_Shop_Details.enterAddress2((String) details.get("address2"));
+			// new_Shop_Details.enterAddress2((String) details.get("address2"));
 			new_Shop_Details.enterCity((String) details.get("city"));
 			new_Shop_Details.stateDropDown((String) details.get("state"));
 			new_Shop_Details.enterZipoCode((String) details.get("zipCode"));
@@ -65,6 +67,7 @@ public class ShopTest{
 			new_Shop_Details.enterNewHire((String) details.get("new_Hire"));
 		}
 	}
+
 	@And("^click on Shop page Save Button$")
 	public void click_on_shop_page_save_button() throws Throwable {
 		new_Shop_Details.click_Save_Button();
@@ -72,8 +75,8 @@ public class ShopTest{
 
 	@Then("^user delete the Shop from subsource$")
 	public void user_delete_the_shop_from_subsource() throws Throwable {
-			shop_Details.delete(company);
-			Thread.sleep(2000);
+		shop_Details.delete(company);
+		Thread.sleep(2000);
 	}
 
 }

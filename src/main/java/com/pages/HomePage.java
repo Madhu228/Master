@@ -15,6 +15,7 @@ public class HomePage {
 	@FindBy(xpath = "//a[contains(text(),'Account Settings')]")
 	WebElement account_Settings;
 	WebDriver driver;
+
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -28,13 +29,11 @@ public class HomePage {
 	public void clickon_Settings() throws InterruptedException {
 		WebDriverUtil.waitForElementStatus(settings);
 		WebDriverUtil.waitForElementJavaScript(settings);
-			}
+	}
 
 	public void clickon_Account_Settings() throws InterruptedException {
 		WebDriverUtil.waitForElementStatus(account_Settings);
 		WebDriverUtil.waitForElementJavaScript(account_Settings);
 	}
-
-	
 
 }
