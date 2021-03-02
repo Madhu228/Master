@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,24 +26,24 @@ public class WebDriverUtil {
 
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 60);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
-
+	} 
+	public static void settingsButtonNavigation(String xpath) {
+		DriverFactory.getDriver().findElement(By.xpath("//a[contains(text(),'"+xpath+"')]")).click();
 	}
-
+	public static void accountSettingsNavigation(String xpath) {
+		DriverFactory.getDriver().findElement(By.xpath("//h2[contains(text(),'"+xpath+"')]")).click();
+	}
 	public static void closeTabs() {
 		String originalHandle = DriverFactory.getDriver().getWindowHandle();
-
 		// Do something to open new tabs
-
 		for (String handle : DriverFactory.getDriver().getWindowHandles()) {
 			if (!handle.equals(originalHandle)) {
 				DriverFactory.getDriver().switchTo().window(handle);
 				DriverFactory.getDriver().close();
 			}
 		}
-
 		DriverFactory.getDriver().switchTo().window(originalHandle);
 	}
-
 	public static String SwitchTab() {
 		ArrayList<String> tabs2 = new ArrayList<String>(DriverFactory.getDriver().getWindowHandles());
 		DriverFactory.getDriver().switchTo().window(tabs2.get(1));
@@ -50,24 +51,18 @@ public class WebDriverUtil {
 		DriverFactory.getDriver().switchTo().window(tabs2.get(0));
 		return cp;
 	}
-
 	public static void passTheValueUsingJavaScript(String value, WebElement element) {
 		JavascriptExecutor jse = (JavascriptExecutor) DriverFactory.getDriver();
 		jse.executeScript("arguments[0].value='" + value + "';", element);
 	}
-
 	public static void waitForElementVisiblity(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 60);
 		wait.until(ExpectedConditions.visibilityOf(element));
-
 	}
-
 	public static void waitForElementJavaScript(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getDriver();
 		js.executeScript("arguments[0].click();", element);
-
 	}
-
 	/**
 	 * wait for title based on availability
 	 * 
@@ -77,7 +72,6 @@ public class WebDriverUtil {
 		WebDriverWait wait = new WebDriverWait(DriverFactory.getDriver(), 20);
 		wait.until(ExpectedConditions.titleContains(title));
 	}
-
 	/**
 	 * wait for element load
 	 *
@@ -136,7 +130,6 @@ public class WebDriverUtil {
 	public static void doubleClick(WebElement element) {
 		Actions ac = new Actions(DriverFactory.getDriver());
 		ac.doubleClick(element).perform();
-
 	}
 
 	/**
@@ -148,7 +141,6 @@ public class WebDriverUtil {
 	public static void dragandDrops(WebElement src, WebElement desti) {
 		Actions ac = new Actions(DriverFactory.getDriver());
 		ac.dragAndDrop(src, desti).perform();
-
 	}
 
 	/*
@@ -167,7 +159,6 @@ public class WebDriverUtil {
 	public static void switchToNewTab(String pageTitle) {
 		Set<String> setlist = DriverFactory.getDriver().getWindowHandles();
 		Iterator<String> it = setlist.iterator();
-
 		while (it.hasNext()) {
 			DriverFactory.getDriver().switchTo().window(it.next());
 			String actPageTitle = DriverFactory.getDriver().getTitle();
@@ -202,7 +193,6 @@ public class WebDriverUtil {
 	 */
 	public static void cancelAlert() {
 		DriverFactory.getDriver().switchTo().alert().dismiss();
-		;
 	}
 
 	/**
@@ -224,7 +214,6 @@ public class WebDriverUtil {
 		Select sel = new Select(element);
 		sel.selectByValue(value);
 	}
-
 	public static void select1(WebElement element, int index) {
 		Select sel = new Select(element);
 		sel.selectByIndex(index);

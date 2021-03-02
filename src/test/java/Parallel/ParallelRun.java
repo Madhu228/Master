@@ -9,7 +9,6 @@ import io.cucumber.testng.CucumberOptions;
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 		"timeline:test-output-thread/" }, monochrome = true, dryRun = false, glue = {
 				"Parallel" }, features = { "./src/test/resources/Parallel" })
-
 public class ParallelRun extends AbstractTestNGCucumberTests {
 	@Override
 	@DataProvider(parallel = true)

@@ -47,41 +47,32 @@ public class NewCompanyDeatilsPage {
 		eIN.click();
 		//eIN.sendKeys(String.valueOf(number));
 	}
-
 	public void enter_Address(String address) {
 		address1.sendKeys(address);
 	}
-
 	public void enter_Address2(String address1) {
 		address2.sendKeys(address1);
 	}
-
 	public void enter_City(String City) {
 		city.sendKeys(City);
 	}
-
 	public void select_drop_Down(String text) throws InterruptedException {
 		WebDriverUtil.waitForElementVisiblity(drop_Down);
 		WebDriverUtil.selectText(drop_Down, text);
 	}
-
 	public void enter_Zip_Code(String code) {
 		zip_Code.sendKeys(code);
 	}
-
 	public void enter_Contact_Number(String number) {
 		WebDriverUtil.waitForElementVisiblity(contact_Number);
 		contact_Number.sendKeys(number);
 	}
-
 	public void enter_Email(String mail) {
 		e_mail.sendKeys(mail);
 	}
-
 	public void enter_Pay_Roll(String payRoll) {
 		pay_roll_Id.sendKeys(payRoll);
 	}
-
 	public void click_Save_Button() {
 		save_Button.click();
 	}

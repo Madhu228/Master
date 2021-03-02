@@ -11,7 +11,6 @@ import com.qa.factory.WebDriverUtil;
 public class ShopDetailsPage {
 	@FindBy(css = "button[class = 'btn dropdown-toggle act']")
 	WebElement toggle_Button;
-
 	@FindBy(xpath = "//*[@id='accordion']/li[2]/div/ul/li[1]/a")
 	WebElement add_New_Button;
 	@FindBy(xpath = "//span[@class = 'ui-button-icon-left ui-clickable pi pi-check']")
